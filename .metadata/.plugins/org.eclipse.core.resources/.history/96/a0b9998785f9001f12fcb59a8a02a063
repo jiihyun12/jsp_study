@@ -1,0 +1,84 @@
+package com.app.vo;
+
+import java.util.Objects;
+
+public class ProductVO {
+// 테이블 보고 만들기
+	private String name;
+	private Long productId;
+	private int productPrice;
+	private int productStock;
+	
+	public ProductVO() {;}
+
+	public ProductVO(String name, Long productId, int productPrice, int productStock) {
+		super();
+		this.name = name;
+		this.productId = productId;
+		this.productPrice = productPrice;
+		this.productStock = productStock;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "ProductVO [name=" + name + ", productId=" + productId + ", productPrice=" + productPrice
+				+ ", productStock=" + productStock + "]";
+	}
+
+	public Long getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
+
+	public int getProductPrice() {
+		return productPrice;
+	}
+
+	public void setProductPrice(int productPrice) {
+		this.productPrice = productPrice;
+	}
+
+	public int getProductStock() {
+		return productStock;
+	}
+
+	public void setProductStock(int productStock) {
+		this.productStock = productStock;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, productId, productPrice, productStock);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ProductVO other = (ProductVO) obj;
+		return Objects.equals(name, other.name) && Objects.equals(productId, other.productId)
+				&& productPrice == other.productPrice && productStock == other.productStock;
+	}
+	
+	
+	
+	
+	
+}

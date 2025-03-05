@@ -1,0 +1,13 @@
+package com.app.vo;
+
+public class ProductVO {
+// 테이블 보고 만들기
+	String name;
+	int productId;
+	int productPrice;
+	int productStock;
+	
+	public ProductVO() {;}
+	
+	
+}
