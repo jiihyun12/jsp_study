@@ -30,5 +30,15 @@
 		WHERE ID = #{id}
 	</delete>
 	
+	<select id="selectId" resultType="Long">
+		SELECT ID
+		FROM (
+			SELECT ID
+			FROM TBL_PRODUCT 
+			ORDER BY ID DESC 
+		)
+		WHERE ROWNUM = 1
+	</select>
+	
 </mapper>
 
