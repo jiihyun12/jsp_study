@@ -8,6 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.app.Result;
+import com.app.product.controller.ProductDeleteController;
+import com.app.product.controller.ProductListController;
+import com.app.product.controller.ProductReadController;
+import com.app.product.controller.ProductUpdateController;
+import com.app.product.controller.ProductUpdateOKController;
 import com.app.product.controller.ProductWriteController;
 import com.app.product.controller.ProductWriteOkController;
 
@@ -31,13 +36,16 @@ public class ProductFrontController extends HttpServlet {
 			result = new ProductListController().excute(req, resp);
 			
 		}else if(target.equals("read")) {
-			
-			
+			result = new ProductReadController().excute(req, resp);
+;			
 		}else if(target.equals("update")) {
+			result = new ProductUpdateController().excute(req, resp);
 			
 		}else if(target.equals("update-ok")) {
+			result = new ProductUpdateOKController().excute(req, resp);
 			
 		}else if(target.equals("delete-ok")) {
+			result = new ProductDeleteController().excute(req, resp);
 			
 		}else {
 			// 전부 404 

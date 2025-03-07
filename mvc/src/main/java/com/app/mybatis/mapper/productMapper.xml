@@ -4,7 +4,7 @@
 <mapper namespace="product">
 	<insert id="insert" parameterType="ProductVO">
 		INSERT INTO TBL_PRODUCT(ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_STOCK)
-		VALUES(SEQ_PRODUCT.NEXTVAL, #{productName}, #{productPrice},#{productStock})
+		2(SEQ_PRODUCT.NEXTVAL, #{productName}, #{productPrice},#{productStock})
 	</insert>
 	
 	<select id="selectAll" resultType="ProductVO">
