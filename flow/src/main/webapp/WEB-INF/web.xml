@@ -20,6 +20,11 @@
   	<url-pattern>*.product</url-pattern>
   </servlet-mapping>
   
+  <servlet-mapping>
+  	<servlet-name>MemberFrontController</servlet-name>
+  	<url-pattern>*.member</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
   	<servlet-name>MemberFrontController</servlet-name>
   	<servlet-class>com.app.member.MemberFrontController</servlet-class>

@@ -1,7 +1,6 @@
 package com.app.order.controller;
 
 import java.io.IOException;
-import java.util.Optional;
 
 import javax.management.RuntimeErrorException;
 import javax.servlet.ServletException;
@@ -13,37 +12,37 @@ import com.app.Action;
 import com.app.Result;
 import com.app.dao.MemberDAO;
 import com.app.dao.OrderDAO;
-import com.app.dao.ProductDAO;
 import com.app.vo.MemberVO;
-import com.app.vo.OrderVO;
 
-public class OrderWriteController implements Action {
+public class OrderListController implements Action {
 
 	@Override
 	public Result excute(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		Result result = new Result();
-		MemberDAO memberDAO = new MemberDAO();
 		OrderDAO orderDAO = new OrderDAO();
-		OrderVO orderVO = new OrderVO();
-		ProductDAO productDAO = new ProductDAO();
+		MemberDAO memberDAO  = new MemberDAO();
 		
 		HttpSession session = req.getSession();
-		
 		String memberEmail = (String)session.getAttribute("memberEmail");
-		Long foundMemberId = memberDAO.selectByEmail(memberEmail).map(MemberVO::getId).orElseThrow(()->{
-			throw new RuntimeException();
+		
+		memberDAO.selectByEmail(memberEmail).map(MemberVO::getId).ifPresent((id)->{			
+			orderDAO.selectAll(id);
 		});
-
-		orderVO.setMemberId(foundMemberId);
-		orderVO.setProductId(Long.parseLong(req.getParameter("productId")));
-		orderVO.setProductCount(Integer.parseInt(req.getParameter("productCount")));
 		
-		productDAO.updateStock(orderVO);
-		orderDAO.insert(orderVO);
+		if(memberEmail == null) {
+			result.setIdRedirect(true);
+			result.setPath("login.member?loginRequired");
+			return result;
+		};
 		
+		Long id = memberDAO.selectByEmail(memberEmail).map(MemberVO::getId).orElseThrow(()->{
+			throw new RuntimeException("user not found");
+		});
 		
-		result.setIdRedirect(true);
-		result.setPath("list.order?memberId=" + foundMemberId);
+			
+		req.setAttribute("orderList", orderDAO.selectAll(id));
+		
+		result.setPath("order-list.jsp");
 		
 		return result;
 	}

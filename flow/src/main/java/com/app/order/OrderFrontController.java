@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.app.Result;
+import com.app.order.controller.OrderCancelController;
+import com.app.order.controller.OrderListController;
 import com.app.order.controller.OrderWriteOkController;
 
 public class OrderFrontController extends HttpServlet{
@@ -22,7 +24,10 @@ public class OrderFrontController extends HttpServlet{
 		
 		if(target.equals("write-ok")) {
 			result = new OrderWriteOkController().excute(req, resp);
-		}else if(target.equals("join-ok")) {
+		}else if(target.equals("list")) {
+			result = new OrderListController().excute(req, resp);
+		}else if(target.equals("cancel")) {
+			result = new OrderCancelController().excute(req, resp);
 		}else {
 //			전부 404
 		}

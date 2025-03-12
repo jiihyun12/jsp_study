@@ -19,5 +19,7 @@
 		WHERE MEMBER_EMAIL = #{memberEmail}
 	</select>
 	
+	
+	
 </mapper>
 
