@@ -49,6 +49,7 @@ public class MemberFrontController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("POST 요청 들어옴!");
 		doGet(req, resp);
 	}
 }

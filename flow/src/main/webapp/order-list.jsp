@@ -33,7 +33,8 @@
             <td><c:out value="${order.productName}" /></td>
             <td><fmt:formatNumber value="${order.productPrice}" pattern="#,###"/>원</td>
             <td><c:out value="${order.productCount}" /></td>
-            <td><fmt:formatNumber value="${order.totalPrice}" pattern="#,###"/>원</td>
+            <td><fmt:formatNu
+            mber value="${order.totalPrice}" pattern="#,###"/>원</td>
          </tr>
       </c:forEach>
    </table>
